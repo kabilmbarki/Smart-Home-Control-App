@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "179166282829",
+    "firebase_url": "https://finalapp-c667d-default-rtdb.firebaseio.com",
+    "project_id": "finalapp-c667d",
+    "storage_bucket": "finalapp-c667d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179166282829:android:723f5ce97721c96f778804",
+        "android_client_info": {
+          "package_name": "com.example.home"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbBVdAeMb-U1cXsWPEqO9M4Jre2i0icck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

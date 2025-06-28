@@ -62,7 +62,7 @@ class _LoginPageState extends State {
       print('Error signing in: $e');
       // Handle the error
       setState(() {
-        _errorMessage = 'Error signing in';
+        _errorMessage = 'Incorrect email or password';
       });
     } finally {
       setState(() {
@@ -87,70 +87,73 @@ class _LoginPageState extends State {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.person,
-              size: 150,
-              color: Colors.green,
-            ),
-            const Text(
-              "SIGN IN",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.person,
+                size: 150,
+                color: Colors.green,
               ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
+              const Text(
+                "SIGN IN",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _errorMessage ?? '', // Show error message here
-              style: TextStyle(color: Colors.red),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _isLoading ? null : _signIn,
-              child: _isLoading ? CircularProgressIndicator() : Text('Sign In'),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "You don't have an Account ? ",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  prefixIcon: Icon(Icons.email),
                 ),
-                GestureDetector(
-                  onTap: _goToCreatAccount, // Navigate to CreatAccount page
-                  child: Text(
-                    "Sign UP now ",
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  prefixIcon: Icon(Icons.lock),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _errorMessage ?? '', // Show error message here
+                style: TextStyle(color: Colors.red),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _isLoading ? null : _signIn,
+                child:
+                    _isLoading ? CircularProgressIndicator() : Text('Sign In'),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "You don't have an Account ? ",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                ),
-              ],
-            )
-          ],
+                  GestureDetector(
+                    onTap: _goToCreatAccount, // Navigate to CreatAccount page
+                    child: Text(
+                      "Sign UP now ",
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

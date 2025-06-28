@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:home/LoginPage.dart';
+import 'package:home/notification_service.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
@@ -35,6 +38,12 @@ class _MyWidgetState extends State<Accueil> {
 
   GlobalKey<FormState> formstate = GlobalKey();
   @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
+
+  @override
   Widget build(BuildContext context) {
     DatabaseReference _getdata =
         FirebaseDatabase.instance.ref().child('module1/Temperature');
@@ -43,6 +52,14 @@ class _MyWidgetState extends State<Accueil> {
         setState(() {
           temphome = event.snapshot.value.toString();
         });
+        double currentTemperature = double.parse(temphome);
+        if (currentTemperature > 45) {
+          NotificationService.showSimpleNotification(
+            title: "High Temperature Alert",
+            body: "The temperature is too high: $currentTemperature°C",
+            payload: "$currentTemperature°C",
+          );
+        }
       },
     );
 
@@ -118,9 +135,22 @@ class _MyWidgetState extends State<Accueil> {
       child: Scaffold(
         key: scaffoldkey,
         appBar: AppBar(
-          title: const Text(
-            "My Home",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          title: Row(
+            children: [
+              Text(
+                "My Home",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              Spacer(),
+              IconButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => LoginPage()));
+                },
+                icon: Icon(Icons.output_outlined),
+              ),
+            ],
           ),
           backgroundColor: Colors.blueAccent,
           bottom: const TabBar(tabs: [

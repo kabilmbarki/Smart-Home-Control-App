@@ -2,6 +2,14 @@
 
 A Flutter application with Firebase integration that provides complete home automation control, including lighting, water systems, and environmental monitoring.
 
+## Demo Video
+
+[![Watch the demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+
+*Note: Replace "VIDEO_ID" with your actual YouTube video ID after uploading your demo video.*
+
+## Features
+
 ## Features
 
 - **Home Automation Control**:
